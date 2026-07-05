@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LingXi Naming — FB主页发帖 + 广告账户创建 完整操作指南</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --accent: #1877F2;
+    --accent-hover: #166fe5;
+    --border: #e0e0e0;
+    --tag-bg: #e8f4fd;
+    --warning-bg: #fff8e1;
+    --warning-border: #ffc107;
+    --success-bg: #e8f5e9;
+    --success-border: #4caf50;
+    --code-bg: #f1f3f4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 24px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1877F2 0%, #0D6EFD 50%, #084298 100%);
+    color: white;
+    padding: 40px 36px;
+    border-radius: var(--radius);
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(24,119,242,0.25);
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .subtitle { opacity: 0.9; font-size: 15px; }
+  .header .meta { margin-top: 16px; display: flex; gap: 20px; font-size: 13px; opacity: 0.8; }
+
+  /* TOC */
+  .toc {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .toc h2 { font-size: 18px; margin-bottom: 12px; }
+  .toc ol { padding-left: 22px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+  }
+  .section h2 { font-size: 22px; margin-bottom: 16px; color: #084298; }
+  .section h3 { font-size: 17px; margin: 20px 0 10px; color: #0D6EFD; }
+
+  /* Warning box */
+  .warning {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .warning strong { color: #e65100; }
+  .tip {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  /* Posts */
+  .post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 20px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .post-card .day-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .post-card h4 { font-size: 18px; margin-bottom: 10px; }
+  .post-card .post-body {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 14px;
+    white-space: pre-line;
+    line-height: 1.8;
+    margin: 10px 0;
+  }
+  .post-card .tags { color: var(--accent); font-size: 13px; margin-top: 8px; }
+  .copy-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .copy-btn:hover { background: var(--accent-hover); }
+
+  /* Steps */
+  .step-list { padding-left: 20px; }
+  .step-list li {
+    margin-bottom: 12px;
+    padding-left: 6px;
+  }
+  .step-list li strong { color: var(--accent); }
+
+  /* Table */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .info-table th, .info-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-table th {
+    background: var(--tag-bg);
+    font-weight: 600;
+    color: #084298;
+  }
+
+  /* Image placeholder */
+  .img-placeholder {
+    background: linear-gradient(135deg, #e8f4fd, #d4e6f9);
+    border: 2px dashed var(--accent);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    margin: 16px 0;
+    color: #0D6EFD;
+  }
+
+  code {
+    background: var(--code-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    .header { padding: 24px 20px; }
+    .section { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <h1>🚀 LingXi Naming — FB 操作指南</h1>
+  <div class="subtitle">Part 1：主页发帖（6条养号贴文）&nbsp;|&nbsp; Part 2：创建广告账户</div>
+  <div class="meta">
+    <span>📅 2026年7月3日</span>
+    <span>🎯 新马华人市场</span>
+    <span>💰 初始预算约$61</span>
+  </div>
+</div>
+
+<!-- ========== TOC ========== -->
+<div class="toc">
+  <h2>📋 目录</h2>
+  <ol>
+    <li><a href="#part1">Part 1：FB主页发帖（6条养号贴文）</a></li>
+    <li><a href="#part2">Part 2：创建FB广告账户（BM后台）</a></li>
+    <li><a href="#part3">⚠️ 关键注意事项</a></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 1: POSTING -->
+<!-- ============================================================ -->
+<div class="section" id="part1">
+  <h2>📝 Part 1：FB主页发帖（6条养号贴文）</h2>
+
+  <div class="warning">
+    <strong>⚠️ 重要提醒：</strong>每天只发1条，连续发6天，<strong>不要一天全发完！</strong>
+    新主页一次性发太多会被FB判定为垃圾账号。建议发布时间：<strong>晚上8:00-10:00</strong>（新马时间，华人活跃高峰）。
+  </div>
+
+  <div class="tip">
+    <strong>💡 省钱提示：</strong>这6条是免费的自然贴文（Organic Posts），不花广告费。目的是"养号"——让FB算法认为你的主页是活跃的真实商家，后续投广告时权重更高，广告审核更容易通过。
+  </div>
+
+  <h3>🔧 发帖操作步骤（每条重复此流程）</h3>
+  <ol class="step-list">
+    <li>打开 <strong>facebook.com</strong>，进入你的 <strong>LingXi Naming 主页</strong></li>
+    <li>点击顶部 <strong>"写贴文"</strong>（Create Post）输入框</li>
+    <li><strong>复制下方贴文内容</strong>，粘贴到输入框</li>
+    <li>点击 <strong>📷 添加图片</strong>，上传之前用 Agnes 生成的宝宝温馨风广告图</li>
+    <li>检查贴文预览效果，确保排版正常</li>
+    <li>点击 <strong>"发布"</strong>（Post / Publish）</li>
+  </ol>
+
+  <hr>
+
+  <!-- Post 1 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第1天 · 周一</span>
+    <h4>第1条：八字是什么？</h4>
+    <div class="post-body">你知道每个宝宝一出生就有一组专属的"生命密码"吗？
+
+它就是八字——根据宝宝的出生年、月、日、时，推算出的天干地支组合。透过八字可以看出宝宝的五行属性、命理强弱，从而为他取一个真正契合的名字。
+
+一个好名字不只是好听，更要帮宝宝补足所缺的五行元素 🌟
+
+📲 想知道你宝宝的八字五行？点击下方联系我们。</div>
+    <div class="tags">#宝宝起名 #八字 #新马华人 #BabyNaming #Bazi</div>
+  </div>
+
+  <!-- Post 2 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第2天 · 周二</span>
+    <h4>第2条：三才五格你听过吗？</h4>
+    <div class="post-body">除了八字，传统姓名学还有一套精密的「三才五格」系统：
+
+🔹 天格 — 祖辈运势
+🔹 人格 — 一生的核心
+🔹 地格 — 少年运势
+🔹 外格 — 人际关系
+🔹 总格 — 中年后运势
+
+每个格都有对应的笔划数理，大吉数越多，名字越吉祥。我们的起名服务会自动帮你算出所有笔划并筛选大吉组合 ✨
+
+📲 想给宝宝取个五格全吉的名字？联系我们了解更多。</div>
+    <div class="tags">#三才五格 #姓名学 #宝宝命名 #新马华人 #BabyName</div>
+  </div>
+
+  <!-- Post 3 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第3天 · 周三</span>
+    <h4>第3条：生肖与名字的奥秘</h4>
+    <div class="post-body">属虎的宝宝，名字里带"木"字旁会特别好 🌳
+属龙的宝宝，名字里带"水"字旁特别旺 💧
+
+不同生肖有不同的喜用字根和避讳偏旁。比如2026年属马的宝宝，适宜用带有"艹""禾""木"部首的字，因为马吃草嘛 🐴
+
+我们会根据宝宝的生肖，帮你筛选最契合的字根。
+
+📲 你的宝宝属什么？WhatsApp发给我们帮你看看！</div>
+    <div class="tags">#生肖 #起名讲究 #新马华人 #ChineseZodiac #BabyNaming</div>
+  </div>
+
+  <!-- Post 4 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第4天 · 周四</span>
+    <h4>第4条：名字谐音有多重要？</h4>
+    <div class="post-body">你有没有遇到过因为名字谐音被笑的经历？😅
+
+谐音避讳是起名中最容易被忽略但又至关重要的一环。一个好名字不仅要寓意好、笔划吉，更要确保没有任何不雅或不吉利的谐音。
+
+比如"范童"→ 饭桶，"史珍香"→ 嗯你懂的……
+
+我们的分析系统会逐字排查普通话常见谐音，确保宝宝的名字走到哪里都好听、不会被笑 👶
+
+📲 需要专业谐音检查？联系我们。</div>
+    <div class="tags">#谐音避讳 #取名注意事项 #宝宝起名 #新马华人</div>
+  </div>
+
+  <!-- Post 5 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第5天 · 周五</span>
+    <h4>第5条：英文名也需要配八字吗？</h4>
+    <div class="post-body">在新马生活，一个英文名是必须的。但你有没有想过——英文名也可以和宝宝的中文名、八字五行搭配？
+
+比如：八字缺水的宝宝，可以选带有Water元素寓意的英文名（Brook、Marina、Dylan 等）。中文名和英文名一起搭配，双重加持 🌊✨
+
+我们的尊享套餐包含中英文名搭配建议，让宝宝在双语环境中如鱼得水。
+
+📲 WhatsApp联系我们了解更多套餐详情。</div>
+    <div class="tags">#中英文名 #新马宝宝 #BilingualBaby #BabyNaming #SGMalaysia</div>
+  </div>
+
+  <!-- Post 6 -->
+  <div class="post-card">
+    <span class="day-badge">🗓 第6天 · 周六</span>
+    <h4>第6条：成人改名也是可以的</h4>
+    <div class="post-body">起名不限于宝宝，很多成年人也想换个更好的名字来迎接新阶段的开始 🌅
+
+无论你是：
+▪️ 觉得现在的名字不太顺
+▪️ 换工作/搬家后想重新开始
+▪️ 即将结婚想换新名字
+
+我们同样可以帮你分析现有八字的优劣，给出改名优化方案。
+
+📲 联系我们，给自己一个新开始。</div>
+    <div class="tags">#改名 #成人改名 #新马华人 #NameChange #FreshStart</div>
+  </div>
+
+  <hr>
+
+  <h3>📌 每条贴文统一附加以下内容</h3>
+  <table class="info-table">
+    <tr><th>项目</th><th>内容</th></tr>
+    <tr><td>配图</td><td>之前用 Agnes 生成的宝宝温馨风广告图（或封面图）</td></tr>
+    <tr><td>WhatsApp CTA</td><td><code>📲 WhatsApp us: +60 11-2101 2465</code></td></tr>
+    <tr><td>语言</td><td>简体中文为主，关键词穿插英文</td></tr>
+    <tr><td>发布时间</td><td>晚上 8:00-10:00（新马时间）</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 2: AD ACCOUNT -->
+<!-- ============================================================ -->
+<div class="section" id="part2">
+  <h2>💰 Part 2：创建FB广告账户（BM后台）</h2>
+
+  <div class="warning">
+    <strong>⚠️ 前置条件：</strong>你必须已经有一个 <strong>BM商务管理平台（Business Manager/Business Portfolio）</strong>。如果还没有，先去 <a href="https://business.facebook.com" target="_blank">business.facebook.com</a> 创建。
+  </div>
+
+  <h3>📋 完整步骤（跟着一步步做）</h3>
+
+  <h4>第1步：进入BM后台</h4>
+  <ol class="step-list">
+    <li>用电脑浏览器打开 <strong><a href="https://business.facebook.com" target="_blank">https://business.facebook.com</a></strong></li>
+    <li>用你的个人FB账号登录</li>
+    <li>登录后你会看到 <strong>Meta Business Suite</strong> 主界面</li>
+  </ol>
+
+  <h4>第2步：进入「设置」→「广告账户」</h4>
+  <ol class="step-list">
+    <li>在左侧菜单栏左下角，点击 <strong>⚙️ 设置（Settings）</strong> 图标</li>
+    <li>或者直接访问这个链接更快：<br><code><a href="https://business.facebook.com/latest/settings/ad_accounts" target="_blank">https://business.facebook.com/latest/settings/ad_accounts</a></code></li>
+    <li>在左侧菜单找到 <strong>「账户」（Accounts）</strong> → 点击 <strong>「广告账户」（Ad accounts）</strong></li>
+  </ol>
+
+  <h4>第3步：点击「+ 添加」→「创建新广告账户」</h4>
+  <ol class="step-list">
+    <li>页面右上角/中间会出现蓝色 <strong>「+ 添加」（+ Add）</strong> 按钮，点击它</li>
+    <li>弹出选项后，选择 <strong>「创建新的广告账户」（Create a new ad account）</strong></li>
+  </ol>
+
+  <h4>第4步：填写广告账户信息</h4>
+  <table class="info-table">
+    <tr><th>字段</th><th>填写建议</th></tr>
+    <tr><td>广告账户名称</td><td><code>LingXi Naming - MY/SG Ads</code>（方便识别）</td></tr>
+    <tr><td>时区</td><td>选 <strong>Asia/Kuala_Lumpur (GMT+8)</strong> 或 <strong>Asia/Singapore</strong></td></tr>
+    <tr><td>货币</td><td>选 <strong>MYR（马来西亚令吉）</strong> 或 <strong>SGD（新加坡元）</strong>，看你的WildCard虚拟卡绑什么币种</td></tr>
+    <tr><td>用途</td><td>选 <strong>"My Business"（自己的业务）</strong></td></tr>
+  </ol>
+
+  <div class="warning">
+    <strong>⚠️ 注意：</strong>货币一旦选定就<strong>不能修改</strong>！建议选 <strong>MYR</strong>（马来西亚令吉），因为你的WhatsApp号码是+60马来西亚号，受众也偏向马来华人。且MYR汇率对你$61预算更友好。
+  </div>
+
+  <h4>第5步：确认并创建</h4>
+  <ol class="step-list">
+    <li>核对所有信息无误</li>
+    <li>勾选同意条款</li>
+    <li>点击 <strong>「创建广告账户」（Create Ad Account）</strong></li>
+  </ol>
+
+  <h4>第6步：添加支付方式（关键！）</h4>
+  <ol class="step-list">
+    <li>创建成功后，系统会提示你添加支付方式</li>
+    <li>选择 <strong>信用卡/借记卡（Credit or Debit Card）</strong></li>
+    <li>输入你的 <strong>WildCard 虚拟信用卡</strong>信息（卡号、有效期、CVV）</li>
+    <li>填写账单地址（可以用马来西亚地址，WildCard一般支持）</li>
+    <li>点击保存 → FB会扣一笔小额验证费（约$1），验证通过后会退回</li>
+  </ol>
+
+  <div class="tip">
+    <strong>💡 省钱提示：</strong>添加支付方式后先<strong>不要急着充值或开广告</strong>。设置好支付方式就好，等后续我们准备好广告素材、受众定位、预算策略后再开始投放。你的$61预算很宝贵，每一分都要花在刀刃上。
+  </div>
+
+  <h3>🗺️ 流程图：BM后台路径一览</h3>
+  <table class="info-table">
+    <tr><th>步骤</th><th>操作位置</th></tr>
+    <tr><td>1. 打开BM</td><td>business.facebook.com → 登录</td></tr>
+    <tr><td>2. 进入设置</td><td>左下角 ⚙️ 图标 → Settings</td></tr>
+    <tr><td>3. 找到广告账户</td><td>Accounts → Ad accounts</td></tr>
+    <tr><td>4. 添加账户</td><td>点击蓝色 "+ Add" 按钮</td></tr>
+    <tr><td>5. 创建新账户</td><td>选择 "Create a new ad account"</td></tr>
+    <tr><td>6. 填写信息</td><td>名称/时区/货币/用途 → Next</td></tr>
+    <tr><td>7. 确认创建</td><td>核对 → Create Ad Account</td></tr>
+    <tr><td>8. 添加支付</td><td>绑定 WildCard 虚拟信用卡</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 3: NOTES -->
+<!-- ============================================================ -->
+<div class="section" id="part3">
+  <h2>⚠️ Part 3：关键注意事项</h2>
+
+  <h3>🔴 关于发帖</h3>
+  <ol class="step-list">
+    <li><strong>分散发布：</strong>一天最多1条，不要集中发。新主页频繁发帖会触发FB风控。</li>
+    <li><strong>不要放链接：</strong>前6条养号贴文尽量不要放外部链接（包括WhatsApp链接也不要太显眼），用文字引导私信即可。等主页稳定后再放链接。</li>
+    <li><strong>互动回复：</strong>有人评论或私信要及时回复，FB会看响应率。</li>
+    <li><strong>配图质量：</strong>用之前Agnes生成的高清图，不要用网上随便找的有版权风险的图。</li>
+  </ol>
+
+  <h3>🔴 关于广告账户</h3>
+  <ol class="step-list">
+    <li><strong>一个BM最多创建几个广告账户有限制：</strong>新BM通常可创建1-2个，随着广告消费增加会逐步放开。</li>
+    <li><strong>广告账户创建后不能删除：</strong>只能"关闭"（Close），以后可以重新激活。</li>
+    <li><strong>WildCard支付注意：</strong>确保卡内余额至少有$2-3用于FB的验证扣款（会退回）。</li>
+    <li><strong>不要频繁操作：</strong>刚创建的广告账户不要马上大规模操作，容易触发风控封号。</li>
+    <li><strong>开启双重验证：</strong>在FB账号安全设置中开启2FA，减少被盗风险。</li>
+  </ol>
+
+  <h3>🟡 关于预算（$61极限方案）</h3>
+  <table class="info-table">
+    <tr><th>项目</th><th>预算</th><th>说明</th></tr>
+    <tr><td>FB发帖</td><td>💰 免费</td><td>自然贴文不花钱</td></tr>
+    <tr><td>创建广告账户</td><td>💰 免费</td><td>BM和广告账户本身免费</td></tr>
+    <tr><td>WildCard开卡费</td><td>约 $5-10</td><td>一次性，虚拟信用卡开卡费用</td></tr>
+    <tr><td>FB广告验证扣款</td><td>约 $1</td><td>验证后会退回</td></tr>
+    <tr><td>FB广告预算</td><td>约 $50</td><td>日预算控制在 $3-5/天，可跑10-16天</td></tr>
+    <tr><td>Agnes Token</td><td>已订阅</td><td>Starter Plan 1500请求/5小时</td></tr>
+  </table>
+</div>
+
+</div>
+
+<script>
+// Copy functionality for post content
+document.querySelectorAll('.post-body').forEach(function(el, i) {
+  var btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.textContent = '📋 复制此贴文';
+  btn.onclick = function() {
+    var text = el.textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = '✅ 已复制！';
+      setTimeout(function() { btn.textContent = '📋 复制此贴文'; }, 2000);
+    });
+  };
+  el.parentNode.insertBefore(btn, el.nextSibling);
+});
+</script>
+
+</body>
+</html>
