@@ -615,7 +615,7 @@ body {
     <div class="process-step">
       <div class="step-num">1</div>
       <h4>填写信息</h4>
-      <p>输入您的出生日期、时间、性别等基本信息</p>
+      <p>输入您的性别、地区等基本信息</p>
     </div>
     <div class="process-step">
       <div class="step-num">2</div>
@@ -661,43 +661,6 @@ body {
             <option>🇸🇬 新加坡</option>
             <option>其他</option>
           </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>出生日期 *（阳历）</label>
-          <input type="date" name="birthdate" required>
-        </div>
-        <div class="form-group">
-          <label>出生时间 *（如不确定可选"不确定"）</label>
-          <select name="birthtime" required>
-            <option value="">请选择</option>
-            <option>不确定</option>
-            <option>子时 (23:00-01:00)</option>
-            <option>丑时 (01:00-03:00)</option>
-            <option>寅时 (03:00-05:00)</option>
-            <option>卯时 (05:00-07:00)</option>
-            <option>辰时 (07:00-09:00)</option>
-            <option>巳时 (09:00-11:00)</option>
-            <option>午时 (11:00-13:00)</option>
-            <option>未时 (13:00-15:00)</option>
-            <option>申时 (15:00-17:00)</option>
-            <option>酉时 (17:00-19:00)</option>
-            <option>戌时 (19:00-21:00)</option>
-            <option>亥时 (21:00-23:00)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group full">
-          <label>现有姓名（选填，改名客户请填写）</label>
-          <input type="text" name="current_name" placeholder="如：陈大文（不改名可留空）">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group full">
-          <label>WhatsApp 号码 *（用于接收报告）</label>
-          <input type="tel" name="whatsapp" placeholder="如：+60123456789" required>
         </div>
       </div>
       <button type="submit" class="form-submit">🔮 提交信息，开始专业起名分析</button>
@@ -786,15 +749,10 @@ function handleSubmit(e) {
   }
 
   // Build WhatsApp message
-  const isRename = entries['current_name'] && entries['current_name'].trim();
   const msg = encodeURIComponent(
-    `你好灵犀命名！我想${isRename ? '改名' : '起名'} 🎯\n\n` +
+    `你好灵犀命名！我想起名/改名 🎯\n\n` +
     `性别：${entries['gender'] || '未填'}\n` +
     `地区：${entries['region'] || '未填'}\n` +
-    `出生日期：${entries['birthdate'] || '未填'}\n` +
-    `出生时间：${entries['birthtime'] || '未填'}\n` +
-    (isRename ? `现有姓名：${entries['current_name']}\n` : '') +
-    `WhatsApp：${entries['whatsapp'] || '未填'}\n` +
     `请帮我分析八字五行并推荐合适的名字，谢谢！`
   );
 
